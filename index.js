@@ -22,9 +22,9 @@ app.use(cors(corsOptions));
 //optionsS
 app.options("*", cors());
 
-router.get('/', (req, res) => {
-  res.send('Welcome to the rescue endpoint!');
-});
+// router.get('/', (req, res) => {
+//   res.send('Welcome to the rescue endpoint!');
+// });
 
 app.use("/v1/rescue", require("./routes/userRoutes"));
 
