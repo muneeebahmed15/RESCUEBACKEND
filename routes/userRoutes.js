@@ -6,7 +6,7 @@ const upload = require("../middleware/imagee");
 
 const router = express.Router();
 
-router.post("/", (req, res) => {
+router.get("/", (req, res) => {
     res.send("Hello, user! You accessed the wrong route.");
   });
 
