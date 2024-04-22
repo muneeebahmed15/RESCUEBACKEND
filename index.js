@@ -14,7 +14,9 @@ app.use(express.json())
 // app.use(cors({ origin:"https://jobrescuefrontend.vercel.app" }))
 
 const corsOptions = {
-  origin:  "https://jobrescuefrontend.vercel.app"   
+  origin: 'https://jobrescuefrontend.vercel.app', // Specify the allowed origin
+  methods: ['GET', 'POST', 'PUT'], // Specify the allowed HTTP methods
+  allowedHeaders: ['Content-Type', 'Authorization'], // Specify the allowed headers
 };
  //"http://localhost:5173",
 app.use(cors(corsOptions));

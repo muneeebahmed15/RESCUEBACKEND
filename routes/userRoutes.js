@@ -6,9 +6,9 @@ const upload = require("../middleware/imagee");
 
 const router = express.Router();
 
-router.get("/", (req, res) => {
-    res.send("Hello, user! You accessed the wrong route.");
-  });
+// router.get("/", (req, res) => {
+//     res.send("Hello, user! You accessed the wrong route.");
+//   });
 
 router.post("/register-user", verifyToken, upload, registerUser);
 
@@ -26,7 +26,7 @@ router.get("/single-user/:id", verifyToken, singleUser);
 
 router.put("/update-user/:id", verifyToken, updateUser);
 
-router.delete("/delete-user/:id", verifyToken, deleteUser);
+// router.delete("/delete-user/:id", verifyToken, deleteUser);
 
 
 //animals
