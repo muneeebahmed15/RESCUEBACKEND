@@ -14,9 +14,9 @@ app.use(express.json())
 // app.use(cors({ origin:"https://jobrescuefrontend.vercel.app" }))
 
 const corsOptions = {
-  origin: ["http://localhost:5173", "https://jobrescuefrontend.vercel.app"]
+  origin:  "https://jobrescuefrontend.vercel.app"   
 };
-
+ //"http://localhost:5173",
 app.use(cors(corsOptions));
 
 //optionsS
