@@ -6,9 +6,9 @@ const upload = require("../middleware/imagee");
 
 const router = express.Router();
 
-// router.get("/", (req, res) => {
-//     res.send("Hello, user! You accessed the wrong route.");
-//   });
+router.get('/', (req, res) => {
+  res.send('Welcome to the rescue endpoint!');
+});
 
 router.post("/register-user", verifyToken, upload, registerUser);
 
