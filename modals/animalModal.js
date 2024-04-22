@@ -1,68 +1,100 @@
 const mongoose = require("mongoose");
 
 const animalSchema = mongoose.Schema({
-
-    // arrivalDate: { type: Date },
-    animalSource: { type: String },
-    animalName: { type: String },
-    // camperPhoto: { type: Date },
-    camperGender: { type: String },
-    camperAge: { type: String },
-    microchip: { type: String },
-    freezemark: { type: String },
-
+    burroSource:  { type: String },
+    animalName:  { type: String } ,
+    // camperPhoto:  { type: String },
+    animalGender:  { type: String } ,
+    animalAge:  { type: String },
+    microchip:  { type: String } ,
+    matchBox:  { type: String },
+    ageNotes:  { type: String },
+    animalNotes:  { type: String },
 
     //care record
-    vaccination: { type: Date },
-    nextVaccination: { type: Date },
+    vaccination:  { type: String } ,
+    nextVaccination:  { type: String } ,
+    vaccinationSerial:  { type: String },
 
-    farrier: { type: Date },
-    nextFarrie: { type: Date },
+    addRabies:  { type: String },
+    nextRabies:  { type: String },
+    rabiesSerial:  { type: String },
 
-    deWorm: { type: Date },
-    nextDeWorm: { type: Date },
+    farrier:  { type: String } ,
+    nextFarrie:  { type: String } ,
+    farrierName:  { type: String },
+    otherFarrierName:  { type: String },
 
-    sandClear: { type: Date },
-    nextSandClear: { type: Date },
+    deWorm:  { type: String } ,
+    nextDeWorm:  { type: String } ,
+    deWormBrand:  { type: String },
 
-    Coggins: { type: Date },
+    sandClear:  { type: String } ,
+    nextSandClear:  { type: String } ,
+    healthCertificate:  { type: String },
 
-    gelded: { type: String },
+    coggins:  { type: String } ,
 
-    foal: { type: String },
+    gelded:  { type: String } ,
+
+    careNotes:  { type: String },
 
     //training
 
-    touch: { type: String },
+    touch:  { type: String } ,
+    touchPicture:  { type: String },
 
-    halten: { type: String },
+    brush:  { type: String }  ,
+    brushPicture:  { type: String },
 
-    leadRope: { type: String },
+    halter:  { type: String },
+    halterPicture:  { type: String },
 
-    leadIn: { type: String },
+    leadRope:  { type: String }  ,
+    leadRopePicture:  { type: String },
 
-    tie: { type: String },
+    leadInSmall:  { type: String }  ,
+    leadInSmallPicture:  { type: String },
 
-    touchLess: { type: String },
+    leadInLarge:  { type: String },
+    leadInLargePicture:  { type: String },
 
-    pickupLess: { type: String },
+    leadInPasture:  { type: String },
+    leadInPasturePicture:  { type: String },
 
-    trailerLoad: { type: String },
+    tie:  { type: String }  ,
+    tiePicture:  { type: String },
+
+    touchFeet:  { type: String }  ,
+    touchFeetPicture:  { type: String },
+
+    pickupFeet:  { type: String },
+    pickupFeetPicture:  { type: String },
+
+    pickoutFeet:  { type: String }  ,
+    pickoutFeetPicture:  { type: String },
+
+    trailerLoad:  { type: String } ,
+    tailerLoadPicture:  { type: String },
+
+    trainingNotes:  { type: String },
 
     //adoptionInformation
-
-    brandInspection: { type: String },
-    halterColor: { type: String },
-    halterSize: { type: String },
-    adoptionDate: { type: Date },
-    adopterName: { type: String },
-    adopterAddress: { type: String },
-    tieToPost: { type: String },
-    adopterCity: { type: String },
-    aopterState: { type: String },
-    adopterZip: { type: String },
-    adopterEmail: { type: String },
-    adopterPhone: { type: String },
+    adoptionDate:  { type: String }  ,
+    adopterName:  { type: String }  ,
+    adopterEmail:  { type: String }  ,
+    adopterPhone:  { type: String },
+    adopterStreet:  { type: String },
+    adopterCity:  { type: String }  ,
+    aopterState:  { type: String }  ,
+    adopterZip:  { type: String }  ,
+    // adopterSource:  { type: String } [],
+    
+    brandInspection:  { type: String }  ,
+    halterColor:  { type: String }  ,
+    otherHalterColor:  { type: String },
+    halterSize:  { type: String }  ,
+    adopterNotes:  { type: String }
 
     
 },

@@ -3,7 +3,6 @@ const animal = require('../modals/animalModal')
 const addAnimal = async(req, res) =>{
    
     try {
-      
                 const response = await animal.create({...req.body});
                 res.status(200).json({msg:"Record Added", response}) 
        
