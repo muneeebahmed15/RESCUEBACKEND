@@ -32,7 +32,7 @@ const registerUser = async(req, res) =>{
             const existingUser = await User.findOne({email});
 
                 if(existingUser){
-                    res.status(400).json("User already exist");
+                    res.status(400).json({msg:"User already exist", user: existingUser});
             }
             else{
               const user = await User.create({
@@ -66,25 +66,28 @@ const registerUser = async(req, res) =>{
     }
 }
 
-const loginUser  = async(req, res) =>{
-    const {email, password} = req.body;
+const loginUser = async (req, res) => {
+    const { email, password } = req.body;
+
+    console.log(req.body);
 
     try {
-        const user = await User.findOne({email});
-        if(!user){
-            res.status(404).json("User not found");
+        const user = await User.findOne({ email });
+        if (!user) {
+            return res.status(404).json("User not found");
         }
-        if(password !== user.password){
-            res.status(400).json("Wrong Credentials");
-        }else{
-            const token = jwt.sign({id:user._id}, process.env.JWT_SECRET);
-            const {password: pass, ...rest} = user._doc;
-            res.status(200).json({token, rest})
+        if (password !== user.password) {
+            return res.status(400).json("Wrong Credentials");
         }
+
+        const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
+        const { password: pass, ...rest } = user._doc;
+        return res.status(200).json({ token, rest });
     } catch (error) {
-        res.status(500).json({error, msg:"Internal Server Error"})
+        return res.status(500).json({ error, msg: "Internal Server Error" });
     }
-}
+};
+
 
 const forgetPassword = async(req, res) =>{
         const {email, password} = req.body;
