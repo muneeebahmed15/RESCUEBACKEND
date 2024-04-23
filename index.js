@@ -24,7 +24,7 @@ app.use(cors(corsOptions));
 //optionsS
 // app.options("*", cors());
 
-app.use("v1/rescue", require("./routes/userRoutes"));
+app.use("/v1/rescue", require("./routes/userRoutes"));
 
 app.listen(port, () => {
     console.log(`Server is running on Port ${port}`);
