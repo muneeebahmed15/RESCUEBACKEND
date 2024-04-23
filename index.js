@@ -16,6 +16,7 @@ const corsOptions = {
   allowedHeaders: ['Content-Type', 'Cookies'], // Specify the allowed headers
   credential: true
 };
+app.options("", cors(corsOptions));
 app.use(cors(corsOptions));
 
 // app.use(cors());
