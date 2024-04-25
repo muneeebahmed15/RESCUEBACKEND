@@ -7,7 +7,8 @@ const animalSchema = mongoose.Schema({
     animalGender:  { type: String } ,
     animalAge:  { type: String },
     microchip:  { type: String } ,
-    matchBox:  { type: String },
+    freezeMark:  { type: String },
+    animalYear: {type: String},
     ageNotes:  { type: String },
     animalNotes:  { type: String },
 

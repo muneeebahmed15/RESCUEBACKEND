@@ -1,7 +1,7 @@
 const express = require("express");
 const { registerUser, loginUser, updatePassword, forgetPassword, currentUser, loadUser, testing, singleUser, updateUser, deleteUser } = require("../controllers/userController");
 const verifyToken = require("../middleware/verifyToken");
-const { addAnimal, getAnimals } = require("../controllers/animalController");
+const { addAnimal, getAnimals, singleAnimal, updateAnimal } = require("../controllers/animalController");
 const upload = require("../middleware/imagee");
 
 const router = express.Router();
@@ -33,6 +33,10 @@ router.put("/update-user/:id", verifyToken, updateUser);
 router.post("/add-animal", verifyToken, addAnimal);
 
 router.get("/get-animals", verifyToken, getAnimals);
+
+router.get("/single-animal/:id", verifyToken, singleAnimal);
+
+router.put("/update-animal/:id", verifyToken, updateAnimal);
 
 
 

@@ -11,7 +11,7 @@ const addAnimal = async(req, res) =>{
     }
 }
 
-const getAnimals = async(req,res) =>{
+const getAnimals = async(req, res) =>{
     try {
         const user = await animal.find()
         if(user){
@@ -25,4 +25,39 @@ const getAnimals = async(req,res) =>{
     }
 }
 
-module.exports = {addAnimal, getAnimals}
+const singleAnimal = async(req, res) =>{
+    const {id} = req.params;
+
+    try {
+        const record = await animal.findById(id);
+        res.status(200).json({record})
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({error: "Internal Server Error"})
+    }
+}
+
+const updateAnimal = async (req, res) => {
+    const { id } = req.params;
+    const updateData = req.body; 
+
+    console.log(id);
+    console.log(req.body);
+
+    try {
+        const updatedAnimal = await animal.findByIdAndUpdate(id, updateData, { new: true });
+
+        if (!updatedAnimal) {
+            return res.status(404).json({ error: "Animal record not found" });
+        }
+
+        res.status(200).json({ data: updatedAnimal });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+};
+
+
+
+module.exports = {addAnimal, getAnimals, singleAnimal, updateAnimal}
