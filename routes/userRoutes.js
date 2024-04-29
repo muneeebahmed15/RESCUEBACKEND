@@ -1,7 +1,8 @@
 const express = require("express");
-const { registerUser, loginUser, updatePassword, forgetPassword, currentUser, loadUser, testing, singleUser, updateUser, deleteUser } = require("../controllers/userController");
+const { registerUser, loginUser, updatePassword, forgetPassword, currentUser, loadUser, testing, singleUser, updateUser, deleteUser, updateDP, practice, uploadFile, getFile, getId } = require("../controllers/userController");
 const verifyToken = require("../middleware/verifyToken");
 const { addAnimal, getAnimals, singleAnimal, updateAnimal } = require("../controllers/animalController");
+
 const upload = require("../middleware/imagee");
 
 const router = express.Router();
@@ -40,12 +41,12 @@ router.put("/update-animal/:id", verifyToken, updateAnimal);
 
 
 
-router.post("/upload-image", upload, (req, res)=>{
-    res.send("file upload")
-});
+// router.post("/upload-image", upload, (req, res)=>{
+//     res.send("file upload")
+// });
 
 
-router.post("/test/image",verifyToken, upload, testing);
+// router.post("/test/image",verifyToken, upload, testing);
 
 
 // router.get('/images/:filename', (req, res) => {
@@ -57,5 +58,14 @@ router.post("/test/image",verifyToken, upload, testing);
 //     res.sendFile(imagePath);
 //   });
 
+// router.post('/uploadDP', upload.single('dp'), updateDP);
+
+// router.post("/uploadPicture", practice)
+
+router.post("/upload-file", upload, uploadFile);
+
+router.get("/get-file/:id", getFile);
+
+router.get("/get-file", getId);
 
 module.exports = router;

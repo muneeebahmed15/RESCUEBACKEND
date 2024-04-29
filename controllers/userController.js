@@ -20,6 +20,8 @@ const registerUser = async(req, res) =>{
         notes
      } = req.body;
 
+     console.log(role)
+
     try {
         // if(!name || !email || !password || !gender){
         //     res.status(400).json("All fields manadatory!");
@@ -47,7 +49,7 @@ const registerUser = async(req, res) =>{
                 role,
                 otherRole,
                 availability,
-                photo,
+                photo: req.file.path,
                 password,
                 notes , 
                 addedBy: req.user.id
@@ -69,7 +71,7 @@ const registerUser = async(req, res) =>{
 const loginUser = async (req, res) => {
     const { email, password } = req.body;
 
-    console.log(req.body);
+    // console.log(req.body);
 
     try {
         const user = await User.findOne({ email });
@@ -87,7 +89,6 @@ const loginUser = async (req, res) => {
         return res.status(500).json({ error, msg: "Internal Server Error" });
     }
 };
-
 
 const forgetPassword = async(req, res) =>{
         const {email, password} = req.body;
@@ -144,8 +145,14 @@ const currentUser = async(req, res) =>{
 const loadUser = async(req, res) =>{
 
     try {
-        const user = await User.find();
-        res.status(200).json(user);
+        const users = await User.find();
+       
+        const usersWithPhotoURL = users.map(user => {
+            const imgURL = user.photo ? `/${user.photo}` : null;
+            return { ...user.toJSON(), photo: imgURL };
+        });
+
+        res.status(200).json({ data: usersWithPhotoURL });
     } catch (error) {
         res.status(500).json({error: "Internal Server Error"});
     }
@@ -225,5 +232,98 @@ const testing = async(req, res) => {
     }
 }
 
+const updateDP = async (req, res) => {
 
-module.exports = {registerUser, loginUser,forgetPassword, updatePassword, currentUser, loadUser, testing, singleUser, updateUser, deleteUser}
+    console.log(req.body);
+
+        const { id } = req.body;
+        const user = await User.findById(id);
+        if (!user) {
+            return res.status(200).json({
+                status: false,
+                message: "User not found"
+            });
+        }
+        // Update the user's image path
+        user.dp = req.file.path;
+        await user.save();
+        // Construct the image URL using the base URL and the user's image path
+        const imageUrl = `${req.protocol}://${req.get('host')}/${user.dp}`;
+        return res.status(200).json({
+            status: true,
+            message: "Profile image uploaded successfully",
+            data: user
+        });
+    }
+
+
+const uploadFile = async (req, res) => {
+        console.log(req.body)
+        console.log(req.file)
+        try {
+            // Check if file exists in the request
+            if (!req.file) {
+                return res.status(400).json({ error: 'No file uploaded' });
+            }
+    
+            // Extract name from request body
+            const { name } = req.body;
+    
+            // Create a new Test object with name and dp fields
+            const newTest = new Test({
+                name: name,
+                file: req.file.path // Assuming req.file.path contains the path to the uploaded file
+            });
+    
+            // Save the new Test object to the database
+            const savedTest = await newTest.save();
+    
+            res.status(200).json({ message: 'File uploaded and saved successfully', test: savedTest });
+        } catch (error) {
+            console.error('Error uploading file:', error);
+            res.status(500).json({ error: 'Internal server error' });
+        }
+    };
+
+
+
+const getFile = async (req, res) => {
+    try {
+        // Fetch the file data from the database
+        const fileData = await Test.findById(req.params.id);
+
+
+        // Check if file data exists
+        if (!fileData) {
+            return res.status(404).json({ message: "File not found" });
+        }
+
+        // Construct the image URL based on your server configuration
+        // const imageUrl = `${req.protocol}://${req.get('host')}/${fileData.file}`;
+
+        const imageUrl = `/${fileData.file}`; //${req.protocol}://${req.get('host')}
+
+        // Send the file data and image URL in the response
+        res.status(200).json({ message: "File retrieved successfully", fileData: { ...fileData.toJSON(), file: imageUrl } });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+};
+
+
+const getId = async (req, res) =>{
+    try {
+        const ids = await Test.find();
+        if(ids){
+            res.status(200).json({msg: "ids", ids})
+        }
+    } catch (error) {
+        console.log(error);
+    }
+}
+    
+    
+    
+
+module.exports = {registerUser, uploadFile,getId, getFile, loginUser,forgetPassword, updatePassword, currentUser, loadUser, testing, singleUser, updateUser, deleteUser}

@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const testSchema = mongoose.Schema({
     name: {type: String, required: true},
-    dp: {type: String}
+    file: {type: String}
 },{
     timestamps: true,
 })

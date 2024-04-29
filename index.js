@@ -4,6 +4,9 @@ const cors = require("cors");
 require('dotenv').config();
 const connectDB = require("./db/db");
 
+const path = require('path');
+
+
 connectDB();
 
 const port = process.env.PORT || 4000;
@@ -12,8 +15,11 @@ app.use(express.json())
 
 app.use(cors());
 
-//optionsS
-// app.options("*", cors());
+// const __filename = fileURLTopath
+
+
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
 
 app.use("/v1/rescue", require("./routes/userRoutes"));
 
