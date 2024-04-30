@@ -15,8 +15,6 @@ app.use(express.json())
 
 app.use(cors());
 
-// const __filename = fileURLTopath
-
 
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
