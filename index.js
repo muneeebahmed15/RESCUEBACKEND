@@ -47,7 +47,7 @@ const port = process.env.PORT || 4000;
 
 // Enable CORS middleware
 app.use(cors({
-    origin: 'https://jobrescuefrontend.vercel.app'
+    origin: 'http://localhost:3000'
 }));
 
 // Parse JSON requests
