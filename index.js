@@ -56,6 +56,11 @@ app.use(express.json());
 // Serve static files from the 'uploads' directory
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
+
+app.use('/', (req, res) => {
+    res.send('Welcome to the rescue endpoint! from the indexxxxxx');
+  });
+
 // Define routes
 app.use("/v1/rescue", userRoutes);
 
