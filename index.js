@@ -50,7 +50,7 @@ app.options('*', cors());
 
 // Enable CORS middleware
 app.use(cors({
-    origin: true   //'http://localhost:5173'
+    origin: ['http://localhost:5173', "https://jobrescuefrontend.vercel.app/"]
 }));
 
 // Parse JSON requests
