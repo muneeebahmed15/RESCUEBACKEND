@@ -45,6 +45,9 @@ connectDB();
 // Define the port for the server
 const port = process.env.PORT || 4000;
 
+// Handle preflight requests
+app.options('*', cors());
+
 // Enable CORS middleware
 app.use(cors({
     origin: true   //'http://localhost:5173'
