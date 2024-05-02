@@ -31,7 +31,10 @@ const port = process.env.PORT || 4000;
 // );
 
 function customCors(req, res, next) {
-  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader(
+    "Access-Control-Allow-Origin",
+    "https://jobrescuefrontend.vercel.app"
+  );
   res.setHeader(
     "Access-Control-Allow-Methods",
     "GET, POST, PUT, DELETE"
