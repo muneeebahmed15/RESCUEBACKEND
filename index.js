@@ -13,7 +13,6 @@ require("dotenv").config();
 connectDB();
 
 // Define the port for the server
-const port = process.env.PORT || 4000;
 
 // Handle preflight requests
 // app.options("*", cors());
@@ -64,6 +63,8 @@ app.get("/", function (req, res) {
 
 // Define routes
 app.use("/v1/rescue", userRoutes);
+
+const port = process.env.PORT || 4000;
 
 // Start the server
 app.listen(port, () => {
