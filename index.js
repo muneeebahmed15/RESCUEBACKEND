@@ -30,18 +30,12 @@ connectDB();
 // );
 
 function customCors(req, res, next) {
-  res.setHeader(
-    "Access-Control-Allow-Origin",
-    "https://jobrescuefrontend.vercel.app"
-  );
-  res.setHeader(
-    "Access-Control-Allow-Methods",
-    "GET, POST, PUT, DELETE"
-  );
-  res.setHeader(
-    "Access-Control-Allow-Headers",
-    "Content-Type, Authorization"
-  );
+  res.setHeader("Access-Control-Allow-Origin", [
+    "https://jobrescuefrontend.vercel.app",
+    "http://localhost:5173",
+  ]);
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
   next();
 }
 
@@ -51,10 +45,7 @@ app.use(customCors);
 app.use(express.json());
 
 // Serve static files from the 'uploads' directory
-app.use(
-  "/uploads",
-  express.static(path.join(__dirname, "uploads"))
-);
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 app.get("/", function (req, res) {
   res.header("Access-Control-Allow-Origin", "*");
