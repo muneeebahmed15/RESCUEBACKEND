@@ -5,7 +5,7 @@ const path = require("path");
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     // Define the destination directory for storing the files
-    cb(null, "multipleImages/"); // Change 'uploads/' to your desired destination directory
+    cb(null, "uploads/"); // Change 'uploads/' to your desired destination directory
   },
   filename: (req, file, cb) => {
     // Define the filename for the stored file
@@ -18,6 +18,5 @@ const storage = multer.diskStorage({
 // Multer upload configuration
 const upload = multer({ storage });
 
-const uploadMiddleware = upload.array("files", 15);
-
-module.exports = uploadMiddleware;
+// Middleware for handling single file uploads
+module.exports = upload.single("file");

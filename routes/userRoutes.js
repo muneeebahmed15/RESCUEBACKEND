@@ -22,9 +22,11 @@ const {
   getAnimals,
   singleAnimal,
   updateAnimal,
+  storeAnimalWithPhotos,
 } = require("../controllers/animalController");
 
-const upload = require("../middleware/imagee");
+const uploadMiddleware = require("../middleware/imagee");
+const upload = require("../middleware/singleImage");
 
 const router = express.Router();
 
@@ -32,22 +34,13 @@ const router = express.Router();
 //   res.send('Welcome to the rescue endpoint!');
 // });
 
-router.post(
-  "/register-user",
-  verifyToken,
-  upload,
-  registerUser
-);
+router.post("/register-user", verifyToken, upload, registerUser);
 
 router.post("/login", loginUser);
 
 router.post("/forget-password", forgetPassword);
 
-router.post(
-  "/update-password",
-  verifyToken,
-  updatePassword
-);
+router.post("/update-password", verifyToken, updatePassword);
 
 router.get("/current-user", verifyToken, currentUser);
 
@@ -60,7 +53,7 @@ router.put("/update-user/:id", verifyToken, updateUser);
 // router.delete("/delete-user/:id", verifyToken, deleteUser);
 
 //animals
-router.post("/add-animal", verifyToken, addAnimal);
+router.post("/add-animal", verifyToken, uploadMiddleware, addAnimal);
 
 router.get("/get-animals", verifyToken, getAnimals);
 
@@ -92,5 +85,7 @@ router.post("/upload-file", upload, uploadFile);
 router.get("/get-file/:id", getFile);
 
 router.get("/get-file", getId);
+
+router.post("/animals", uploadMiddleware, storeAnimalWithPhotos);
 
 module.exports = router;
