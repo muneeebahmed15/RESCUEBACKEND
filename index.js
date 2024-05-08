@@ -29,6 +29,10 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use("/multipleImages", express.static(path.join(__dirname, "multipleImages")));
 
 // Define routes
+app.use("/", (req, res) => {
+  res.send("HELLO! Welcome to camper rescue app");
+});
+
 app.use("/v1/rescue", userRoutes);
 
 const port = process.env.PORT || 4000;
