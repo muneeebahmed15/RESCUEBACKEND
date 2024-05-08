@@ -23,10 +23,12 @@ const {
   singleAnimal,
   updateAnimal,
   storeAnimalWithPhotos,
+  multipleImage,
 } = require("../controllers/animalController");
 
 const uploadMiddleware = require("../middleware/imagee");
 const upload = require("../middleware/singleImage");
+const multiTest = require("../middleware/testing.Image");
 
 const router = express.Router();
 
@@ -53,7 +55,7 @@ router.put("/update-user/:id", verifyToken, updateUser);
 // router.delete("/delete-user/:id", verifyToken, deleteUser);
 
 //animals
-router.post("/add-animal", verifyToken, uploadMiddleware, addAnimal);
+router.post("/add-animal", verifyToken, multiTest, addAnimal);
 
 router.get("/get-animals", verifyToken, getAnimals);
 
@@ -87,5 +89,7 @@ router.get("/get-file/:id", getFile);
 router.get("/get-file", getId);
 
 router.post("/animals", uploadMiddleware, storeAnimalWithPhotos);
+
+router.post("/multiple-images", multiTest, multipleImage);
 
 module.exports = router;

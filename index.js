@@ -15,7 +15,7 @@ connectDB();
 // Enable CORS middleware with specific configuration
 app.use(
   cors({
-    origin: ["http://localhost:5173", "https://jobrescuefrontend.vercel.app"],
+    origin: ["http://localhost:5173", "https://camprescue.vercel.app"],
     methods: ["POST", "GET", "PUT", "DELETE"],
     credentials: true,
   })

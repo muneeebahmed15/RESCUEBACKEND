@@ -3,11 +3,16 @@ const test = require("../modals/testModal");
 
 const addAnimal = async (req, res) => {
   const data = req.body;
-  const files = req.files.map((file) => file.path);
-  console.log(files);
+  // const files = req.files.map((file) => file.path);
+  // console.log(files);
+  const animalPhoto = req.files["animalPhoto"]?.path; // Assuming you want to access the first file if there are multiple
+  const touchPicture = req.files["touchPicture"]; //[0]
+  const brushPicture = req.files["brushPicture"];
+
+  console.log(animalPhoto);
 
   try {
-    const response = await animal.create({ ...data, files });
+    const response = await animal.create({ ...data, animalPhoto }); //files
     if (response) {
       res.status(200).json({ msg: "Record Added", response });
     } else {
@@ -91,10 +96,24 @@ const storeAnimalWithPhotos = async (req, res) => {
   }
 };
 
+const multipleImage = async (req, res) => {
+  console.log(req.files);
+  try {
+    // if (req.files) {
+    //   res.status(200).json("files uploaded");
+    res.status(200).json(req.files);
+    // }
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
 module.exports = {
   addAnimal,
   getAnimals,
   singleAnimal,
   updateAnimal,
   storeAnimalWithPhotos,
+  multipleImage,
 };

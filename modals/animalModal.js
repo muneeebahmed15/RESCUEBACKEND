@@ -8,7 +8,7 @@ const animalSchema = mongoose.Schema(
 
     burroSource: { type: String },
     animalName: { type: String },
-    // camperPhoto:  { type: String },
+    animalPhoto: { type: String },
     animalGender: { type: String },
     animalAge: { type: String },
     microchip: { type: String },
