@@ -6,9 +6,7 @@ const testSchema = mongoose.Schema(
   //   files: [{ type: String }], // Array of image paths
   // },
   {
-    animalPhoto: { type: String },
-    touchPicture: { type: String },
-    brushPicture: { type: String },
+    files: [], // Array of image paths
   },
   {
     timestamps: true,

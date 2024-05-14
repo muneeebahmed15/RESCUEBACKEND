@@ -3,16 +3,12 @@ const test = require("../modals/testModal");
 
 const addAnimal = async (req, res) => {
   const data = req.body;
-  // const files = req.files.map((file) => file.path);
-  // console.log(files);
-  const animalPhoto = req.files["animalPhoto"]?.path; // Assuming you want to access the first file if there are multiple
-  const touchPicture = req.files["touchPicture"]; //[0]
-  const brushPicture = req.files["brushPicture"];
-
-  console.log(animalPhoto);
+  const files = req.files.map((file) => file.path);
 
   try {
-    const response = await animal.create({ ...data, animalPhoto }); //files
+    const response = await animal.create({ ...data, files });
+    // console.log(response);
+
     if (response) {
       res.status(200).json({ msg: "Record Added", response });
     } else {
@@ -97,7 +93,9 @@ const storeAnimalWithPhotos = async (req, res) => {
 };
 
 const multipleImage = async (req, res) => {
-  console.log(req.files);
+  const files = req.files.map((file) => file.path);
+  console.log(files);
+
   try {
     // if (req.files) {
     //   res.status(200).json("files uploaded");

@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const animalSchema = mongoose.Schema(
   {
-    files: [{ type: String }],
+    files: [],
     name: { type: String },
     age: { type: String },
 

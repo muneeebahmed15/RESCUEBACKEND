@@ -16,12 +16,6 @@ const storage = multer.diskStorage({
 });
 
 // Multer upload configuration
-const upload = multer({ storage });
+const uploading = multer({ storage });
 
-const multiTest = upload.fields([
-  { name: "animalPhoto", maxCount: 1 },
-  // { name: "touchPicture", maxCount: 1 },
-  // { name: "brushPicture", maxCount: 1 },
-]);
-
-module.exports = multiTest;
+module.exports = uploading.array("file");

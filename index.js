@@ -15,7 +15,7 @@ connectDB();
 // Enable CORS middleware with specific configuration
 app.use(
   cors({
-    origin: "https://camprescue.vercel.app", //, "http://localhost:5173"],
+    origin: "http://localhost:5173", //https://camprescue.vercel.app
     methods: ["POST", "GET", "PUT", "DELETE"],
     credentials: true,
   })
@@ -26,14 +26,14 @@ app.use(express.json());
 
 // Serve static files from the 'uploads' directory
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
-app.use("/multipleImages", express.static(path.join(__dirname, "multipleImages")));
+app.use("/testing", express.static(path.join(__dirname, "testing")));
 
 // Define routes
 // app.use("/", (req, res) => {
 //   res.send("HELLO! Welcome to camper rescue app");
 // });
 
-app.use("/", userRoutes);
+app.use("/v1/rescue", userRoutes);
 
 const port = process.env.PORT || 4000;
 
