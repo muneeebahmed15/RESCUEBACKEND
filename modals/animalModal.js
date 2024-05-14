@@ -3,8 +3,6 @@ const mongoose = require("mongoose");
 const animalSchema = mongoose.Schema(
   {
     files: [],
-    name: { type: String },
-    age: { type: String },
 
     burroSource: { type: String },
     animalName: { type: String },
@@ -48,40 +46,28 @@ const animalSchema = mongoose.Schema(
     //training
 
     touch: { type: String },
-    touchPicture: { type: String },
 
     brush: { type: String },
-    brushPicture: { type: String },
 
     halter: { type: String },
-    halterPicture: { type: String },
 
     leadRope: { type: String },
-    leadRopePicture: { type: String },
 
     leadInSmall: { type: String },
-    leadInSmallPicture: { type: String },
 
     leadInLarge: { type: String },
-    leadInLargePicture: { type: String },
 
     leadInPasture: { type: String },
-    leadInPasturePicture: { type: String },
 
     tie: { type: String },
-    tiePicture: { type: String },
 
     touchFeet: { type: String },
-    touchFeetPicture: { type: String },
 
     pickupFeet: { type: String },
-    pickupFeetPicture: { type: String },
 
     pickoutFeet: { type: String },
-    pickoutFeetPicture: { type: String },
 
     trailerLoad: { type: String },
-    tailerLoadPicture: { type: String },
 
     trainingNotes: { type: String },
 
@@ -92,9 +78,9 @@ const animalSchema = mongoose.Schema(
     adopterPhone: { type: String },
     adopterStreet: { type: String },
     adopterCity: { type: String },
-    aopterState: { type: String },
+    adopterState: { type: String },
     adopterZip: { type: String },
-    // adopterSource:  { type: String } [],
+    adopterSource: { type: String },
 
     brandInspection: { type: String },
     halterColor: { type: String },
