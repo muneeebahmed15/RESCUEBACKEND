@@ -16,7 +16,7 @@ connectDB();
 // Enable CORS middleware with specific configuration
 app.use(
   cors({
-    origin: "https://camprescue.vercel.app", //"http://localhost:5173",
+    origin: "https://musical-starburst-2690cb.netlify.app", //"http://localhost:5173",
     methods: ["POST", "GET", "PUT", "DELETE"],
     credentials: true,
   })
