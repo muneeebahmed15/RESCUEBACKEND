@@ -23,7 +23,7 @@ connectDB();
 // );
 app.use(
   cors({
-    origin: "https://camprescue.vercel.app/",
+    origin: "https://rescue-three.vercel.app/",
     credentials: true,
   })
 );
