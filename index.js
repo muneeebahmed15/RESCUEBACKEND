@@ -21,12 +21,12 @@ connectDB();
 //     credentials: true,
 //   })
 // );
-app.use(
-  cors({
-    origin: "https://rescue-three.vercel.app/",
-    credentials: true,
-  })
-);
+// app.use(cors({
+//       origin: 'https://camprescue.vercel.app//',
+//       credentials: true,
+//     }));
+
+app.use(cors());
 
 // Parse JSON requests
 app.use(express.json());
