@@ -14,10 +14,16 @@ require("dotenv").config();
 connectDB();
 
 // Enable CORS middleware with specific configuration
+// app.use(
+//   cors({
+//     origin: "https://musical-starburst-2690cb.netlify.app", //"http://localhost:5173",
+//     methods: ["POST", "GET", "PUT", "DELETE"],
+//     credentials: true,
+//   })
+// );
 app.use(
   cors({
-    origin: "https://musical-starburst-2690cb.netlify.app", //"http://localhost:5173",
-    methods: ["POST", "GET", "PUT", "DELETE"],
+    origin: "https://camprescue.vercel.app/",
     credentials: true,
   })
 );
